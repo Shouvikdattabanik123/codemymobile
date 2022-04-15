@@ -1,0 +1,33 @@
+<h1 *ngIf="currentFriend">Friends of {{currentFriend}}</h1>
+<div class="row card-group">
+  <div class="col-2" *ngFor="let user of users">
+    <div class="card" (click)="getFriendsListByUser(user)">
+      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+        <img src='{{user.avatar}}' class="img-fluid" />
+        <a href="javascript:void(0)">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <p class="card-text">
+          {{user.first_name}} {{user.last_name}}
+        </p>
+        <a href="#!" class="btn btn-success btn-lg">Friends</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mt-4">
+  <div class="col-2">
+    <button class="btn btn-primary" (click)="goHome()">Home</button>
+  </div>
+  <div class="offset-2 col-2">
+    Showing <select [(ngModel)]="size" (ngModelChange)= onPageSizeChange($event)><option *ngFor="let c of [5,10,25]" [value]="c">{{c}}</option></select> records per page
+  </div>
+  <div class="offset-2 col-2">
+    <button class="btn btn-primary" [disabled]="previousPageDisable" (click)="previousPage()">Previous</button>
+  </div>
+  <div class="col-2">
+    <button class="btn btn-primary" [disabled]="nextPageDisable" (click)="nextPage()">Next</button>
+  </div>
+</div>
