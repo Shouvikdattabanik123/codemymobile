@@ -56,6 +56,7 @@ export class DashboardComponent implements OnInit {
     this.page=1;
     this.nextPageDisable=false;
     this.previousPageDisable=true;
+    this.currentFriend='';
     this.getFriendsList();
   }
 
